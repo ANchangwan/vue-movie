@@ -3,6 +3,8 @@ import data from './assets/movies.js';
 import Navbar from "@/components/Navbar.vue";
 import Modal from "@/components/Modal.vue";
 import Movies from "@/components/Movies.vue";
+import Event from "@/components/Event.vue";
+import SearchBar from "@/components/SearchBar.vue";
 
 
 export default {
@@ -23,13 +25,16 @@ export default {
     Navbar,
     Modal,
     Movies,
+    Event,
+    SearchBar,
   }
 };
 </script>
 
 <template>
   <Navbar />
-
+  <Event text="Netflix 강렬한 운명의 드라마, 경성 크리처"/>
+  <SearchBar />
   <div class="movie_info">
     <Movies
         @increaseLike="increaseLike($event)"
@@ -44,12 +49,15 @@ export default {
 </template>
 
 <style>
-  body{
-    width: 538px;
-    margin: 0 auto;
-    position:relative;
-    box-sizing: border-box;
-  }
+*{
+  box-sizing: border-box;
+  margin: 0;
+
+}
+body{
+  width: 500px;
+  margin: 0 auto;
+}
   h1, h2, h2 {
     margin-bottom: 1rem;
   }
@@ -59,6 +67,9 @@ export default {
   button {
     margin-right: 10px;
     margin-top: 1rem;
+  }
+  .movie_info {
+    padding: 5px;
   }
   .item{
     display: flex;
@@ -99,6 +110,13 @@ export default {
     border-radius: 10px;
     width: 350px;
     height: 150px;
+  }
+  .subtitle{
+    width: 100%;
+    background: gray;
+    height: 30px;
+    padding: 5px;
+    color: white;
   }
 
 </style>

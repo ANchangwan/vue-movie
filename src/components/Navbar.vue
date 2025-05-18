@@ -1,34 +1,30 @@
 <template>
   <nav>
-    <ul>
-      <li><a href="#">Home</a></li>
-      <li><a href="#">Movies</a></li>
-      <li><a href="#">About</a></li>
-    </ul>
+    <a href="#">Home</a>
+    <a href="#">Movies</a>
+    <a href="#">About</a>
   </nav>
 </template>
 
 <script>
-  export default {
-    name: 'NavbarComponent',
-  }
+export default {
+  name: "NavbarComponent",
+};
 </script>
 
 <style>
-  nav{
-    padding: 20px;
-    width: 100%;
-    background-color: black;
-  }
-  nav>ul{
-    display: flex;
-    gap: 1rem;
-    text-decoration: none;
-    justify-content: center;
-  }
-  nav>ul>li>a{
-    text-decoration: none;
-    color:white;
+nav {
+  background-color: black;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap:1rem;
+}
 
-  }
+
+nav > a {
+  text-decoration: none;
+  color: white;
+}
 </style>

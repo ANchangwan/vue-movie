@@ -26,7 +26,7 @@ export default {
         <div class="likeit" v-if="true">
           <span>{{ item.year }}</span>
           <div  class="btn__like-col">
-            <button @click="$emit('increaseLike',index)">좋아요</button>
+            <button @click="$emit('increaseLike',index)" >좋아요</button>
             <span>{{ item.like }}</span>
             <p>
               <button @click="$emit('openModal', index)">상세보기</button>
