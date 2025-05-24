@@ -1,9 +1,19 @@
 <script>
 export default {
   name: "SearchBarComponent",
+  props: {
+    data:Array,
+  },
   data(){
     return {
       inputText:'',
+    }
+  },
+  watch:{
+    inputText(name){
+        const findName = this.data.filter(movie=>{
+          return movie.title.includes(name);
+        });
     }
   }
 }
@@ -13,7 +23,10 @@ export default {
   <div class="search-box">
     <input
         type="search"
-        v-model="inputText"
+        @change="
+        $emit('searchMovie', $event.target.value);
+        inputText= $event.target.value;
+        $event.target.value= ''"
         placeholder="검색어 입력"
     />
     <button>검색</button>

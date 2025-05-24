@@ -13,6 +13,7 @@ export default {
     return {
       isModal: false,
       data,
+      data_temp:[...data], // 영화 데이타 사본
       selectedMovie:0,
     };
   },
@@ -20,6 +21,14 @@ export default {
     increaseLike(i) {
       this.data[i].like += 1;
     },
+    searchMovie(title){
+      this.data_temp = this.data.filter(movie => {
+        return movie.title.includes(title);
+      })
+    },
+    showAllMovie(){
+      return this.data_temp =[...this.data];
+    }
   },
   components: {
     Navbar,
@@ -34,11 +43,15 @@ export default {
 <template>
   <Navbar />
   <Event text="Netflix 강렬한 운명의 드라마, 경성 크리처"/>
-  <SearchBar />
+  <SearchBar :data="data_temp"  @searchMovie="searchMovie($event)" />
+  <p>
+    <button @click ="showAllMovie" >전체보기</button>
+  </p>
   <div class="movie_info">
     <Movies
         @increaseLike="increaseLike($event)"
-        @openModal="isModal = true; selectedMovie=$event" :data="data" />
+        @openModal="isModal = true; selectedMovie=$event"
+        :data="data_temp" />
     <Modal
         :data="data"
         :isModal="isModal"
