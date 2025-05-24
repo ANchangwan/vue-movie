@@ -15,11 +15,20 @@ export default {
       data,
       data_temp:[...data], // 영화 데이타 사본
       selectedMovie:0,
+      text:[
+          'Netflix 강렬한 운명의 드라마, 경성 크리처',
+          '디즈니 100주년 기념작, 위치'
+      ],
+      eventTextNum:0
     };
   },
   methods: {
-    increaseLike(i) {
-      this.data[i].like += 1;
+    increaseLike(id) {
+      this.data.find(movie => {
+        if (movie.id === id){
+          movie.like += 1;
+        }
+      })
     },
     searchMovie(title){
       this.data_temp = this.data.filter(movie => {
@@ -36,14 +45,22 @@ export default {
     Movies,
     Event,
     SearchBar,
+  },
+  mounted() {
+    console.log('mounted');
+    setInterval(() => {
+      this.eventTextNum += 1;
+      if(this.text.length - 1 < this.eventTextNum) this.eventTextNum = 0;
+    },3000)
   }
 };
 </script>
 
 <template>
   <Navbar />
-  <Event text="Netflix 강렬한 운명의 드라마, 경성 크리처"/>
+  <Event :text="text[eventTextNum]"/>
   <SearchBar :data="data_temp"  @searchMovie="searchMovie($event)" />
+
   <p>
     <button @click ="showAllMovie" >전체보기</button>
   </p>

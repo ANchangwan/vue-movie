@@ -1,5 +1,6 @@
 const data =  [
     {
+        id: 0,
         title: "노량",
         year: 2023,
         category: "액션, 드라마",
@@ -8,6 +9,7 @@ const data =  [
         imgUrl:"/public/assets/노량.jpeg",
     },
     {
+        id: 1,
         title: "아쿠아 맨",
         category: "action, fantasy", // 오타 수정
         year: 2023,
